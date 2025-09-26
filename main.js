@@ -1,25 +1,22 @@
-const TILE_SIZE = 32;
-const COLS = 15;
-const ROWS = 20;
-const GAME_WIDTH = COLS * TILE_SIZE;
-const GAME_HEIGHT = ROWS * TILE_SIZE;
+import { Hero } from "./hero.js";
+import { World } from "./script/world.js";
 
-window.addEventListener('load', function()
+export const TILE_SIZE = 32;
+export const COLS = 15;
+export const ROWS = 20;
+const GAME_WIDTH = TILE_SIZE * COLS;
+const GAME_HEIGHT = TILE_SIZE * ROWS;
+
+window.addEventListener('load', () => {
     const canvas = document.getElementById('canvas1');
     const ctx = canvas.getContext('2d');
     canvas.width = GAME_WIDTH;
     canvas.height = GAME_HEIGHT;
 
-    function drawGrid() {
-        for (let row = 0; row < ROWS; row++) {
-            for (let col = 0; col < COLS; col++) {
-                for (let col = 0; col < COLS; col++){
-                    ctx.strokeRect(0 * TILE_SIZE, 0 * TILE_SIZE
-                                        , TILE_SIZE, TILE_SIZE);
-                }
-                
-            }
-    }
-}
-    drawGrid();
-)
+    const world = new World();
+    world.drawGrid(ctx);
+
+    const hero = new Hero({});
+    hero.draw(ctx);
+
+});
