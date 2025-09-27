@@ -31,7 +31,3 @@ window.addEventListener("load", function() {
 //Draw self portrait
 //Using simple shapes and colors
 //In a pixel art style
-function drawPixelArt() {
-    //Head
-    ctx.fillStyle = "#f5cfa0";
-}
