@@ -20,14 +20,18 @@ window.addEventListener("load", function() {
     function drawGrid() {
         for (let row = 0; row < ROWS; row++) {
             for (let col = 0; col < COLS; col++) {
-                ctx.strokeRect(col * TILE_SIZE, row *  TILE_SIZE, TILE_SIZE, TILE_SIZE);
-            
+                ctx.strokeRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
             }
         }
     }
-    drawGrid();
-});
 
-//Draw self portrait
-//Using simple shapes and colors
-//In a pixel art style
+    function drawPixelArt() {
+        // Head
+        ctx.fillStyle = "#f5cfa0";
+        ctx.fillRect(5 * TILE_SIZE, 2 * TILE_SIZE, 5 * TILE_SIZE, 5 * TILE_SIZE);
+    }
+
+    drawGrid();
+    drawPixelArt();
+    console.log("drawPixelArt");
+});
