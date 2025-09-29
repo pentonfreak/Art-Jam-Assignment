@@ -25,12 +25,13 @@ window.addEventListener("load", function() {
         }
     }
 
+    // Draw pixel self portrait
     function drawPixelArt() {
         // Head
         ctx.fillStyle = "#f5cfa0";
         ctx.fillRect(5 * TILE_SIZE, 2 * TILE_SIZE, 5 * TILE_SIZE, 5 * TILE_SIZE);
     }
-
+        
     drawGrid();
     drawPixelArt();
     console.log("drawPixelArt");
