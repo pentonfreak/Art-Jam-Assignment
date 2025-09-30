@@ -5,6 +5,8 @@
 
 //Create a grid
 
+"use strict";
+
 const TILE_SIZE = 25;
 const COLS = 35;
 const ROWS = 35;
@@ -165,5 +167,6 @@ window.addEventListener("load", function() {
         
     drawGrid();
     drawPixelArt();
-    console.log("drawPixelArt");
 });
+
+
