@@ -7,12 +7,6 @@
 
 "use strict";
 
-//Setup use as mouse coordinates
-const mouse = {
-    x: undefined,
-    y: undefined
-};
-
 // Set up canvas and grid parameters
 const TILE_SIZE = 25;
 const COLS = 35;
@@ -44,6 +38,7 @@ window.addEventListener("load", function() {
             }
         }
     }
+
 
 // Draw pixel self portrait
     function drawPixelArt() {
@@ -163,6 +158,7 @@ window.addEventListener("load", function() {
         ctx.fillRect(13 * TILE_SIZE, 15 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
         ctx.fillRect(22 * TILE_SIZE, 15 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
 
+
         //Face shading
         ctx.fillStyle = "#f9ba83ff";
         ctx.fillRect(7 * TILE_SIZE, 20 * TILE_SIZE, 1 * TILE_SIZE, 5 * TILE_SIZE);
@@ -176,17 +172,8 @@ window.addEventListener("load", function() {
     drawPixelArt();
 });
 
-//Move eyes with mouse
 
-window.addEventListener('mousemove', function(event) {
-    const canvas = document.getElementById('canvas1');
-    const rect = canvas.getBoundingClientRect();
-    mouse.x = ctx.fillRect(mouse.x, mouse.y, 1, 1);
-    mouse.y = ctx.fillRect(mouse.x, mouse.y, 1, 1);
 
-    console.log('Mouse X: ' + mouse.x + ', Mouse Y: ' + mouse.y);
-}
-);
 
 
 
