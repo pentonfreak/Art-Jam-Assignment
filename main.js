@@ -7,6 +7,13 @@
 
 "use strict";
 
+//Setup use as mouse coordinates
+const mouse = {
+    x: undefined,
+    y: undefined
+};
+
+// Set up canvas and grid parameters
 const TILE_SIZE = 25;
 const COLS = 35;
 const ROWS = 35;
@@ -168,5 +175,19 @@ window.addEventListener("load", function() {
     drawGrid();
     drawPixelArt();
 });
+
+//Move eyes with mouse
+
+window.addEventListener('mousemove', function(event) {
+    const canvas = document.getElementById('canvas1');
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = ctx.fillRect(mouse.x, mouse.y, 1, 1);
+    mouse.y = ctx.fillRect(mouse.x, mouse.y, 1, 1);
+
+    console.log('Mouse X: ' + mouse.x + ', Mouse Y: ' + mouse.y);
+}
+);
+
+
 
 
