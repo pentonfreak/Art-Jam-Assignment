@@ -6,8 +6,8 @@
 //Create a grid
 
 const TILE_SIZE = 25;
-const COLS = 27;
-const ROWS = 27;
+const COLS = 35;
+const ROWS = 35;
 const WIDTH = TILE_SIZE * COLS;
 const HEIGHT = TILE_SIZE * ROWS;
 
@@ -17,13 +17,13 @@ window.addEventListener("load", function() {
     canvas.height = HEIGHT;
     const ctx = canvas.getContext("2d");
 
-// Draw column letters (A-Z)
+// Draw column letters
         for (let col = 0; col < COLS; col++) {
             const letter = String.fromCharCode(65 + col); // 65 = 'A'
             ctx.fillText(letter, col * TILE_SIZE + TILE_SIZE / 2 + TILE_SIZE, TILE_SIZE / 2);
         }
 
-// Draw row numbers (1-26)
+// Draw row numbers
         for (let row = 0; row < ROWS; row++) {
             ctx.fillText((row + 1).toString(), TILE_SIZE / 2, row * TILE_SIZE + TILE_SIZE / 2 + TILE_SIZE);
         }
@@ -38,54 +38,129 @@ window.addEventListener("load", function() {
 
 // Draw pixel self portrait
     function drawPixelArt() {
-        // Shirt
-        ctx.fillStyle = "#0900acff";
-        ctx.fillRect(1 * TILE_SIZE, 23 * TILE_SIZE, 12 * TILE_SIZE, 4 * TILE_SIZE);
-        ctx.fillRect(15 * TILE_SIZE, 23 * TILE_SIZE, 12 * TILE_SIZE, 4 * TILE_SIZE);
-        ctx.fillRect(2 * TILE_SIZE, 22 * TILE_SIZE, 24 * TILE_SIZE, 1 * TILE_SIZE);
-        ctx.fillRect(3 * TILE_SIZE, 21 * TILE_SIZE, 22 * TILE_SIZE, 1 * TILE_SIZE);
-        ctx.fillRect(9 * TILE_SIZE, 20 * TILE_SIZE, 10 * TILE_SIZE, 1 * TILE_SIZE);
-        ctx.fillRect(11 * TILE_SIZE, 19 * TILE_SIZE, 6 * TILE_SIZE, 1 * TILE_SIZE);
         
-        //Undershirt
-        ctx.fillStyle = "#04eaffff";
-        ctx.fillRect(13 * TILE_SIZE, 19 * TILE_SIZE, 2 * TILE_SIZE, 8 * TILE_SIZE);
+        //Face Silouette
+        ctx.fillStyle = "#fec492ff";
+        ctx.fillRect(8 * TILE_SIZE, 6 * TILE_SIZE, 20 * TILE_SIZE, 20 * TILE_SIZE);
+        ctx.fillRect(7 * TILE_SIZE, 7 * TILE_SIZE, 1 * TILE_SIZE, 18 * TILE_SIZE);
+        ctx.fillRect(28 * TILE_SIZE, 7 * TILE_SIZE, 1 * TILE_SIZE, 18 * TILE_SIZE);
+        ctx.fillRect(9 * TILE_SIZE, 5 * TILE_SIZE, 18 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(9 * TILE_SIZE, 26 * TILE_SIZE, 18 * TILE_SIZE, 1 * TILE_SIZE);
 
-        //Neck
-        ctx.fillStyle = "#f5c6a5ff";
-        ctx.fillRect(12 * TILE_SIZE, 18 * TILE_SIZE, 4 * TILE_SIZE, 1 * TILE_SIZE);
+        //Ears
+        ctx.fillStyle = "#fec492ff"; 
+        ctx.fillRect(6 * TILE_SIZE, 13 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE);
+        ctx.fillRect(28 * TILE_SIZE, 13 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE);
 
-        //Face
-        ctx.fillStyle = "#ffd0afff";
-        ctx.fillRect(10 * TILE_SIZE, 17 * TILE_SIZE, 8 * TILE_SIZE, 1 * TILE_SIZE);
-        ctx.fillRect(8 * TILE_SIZE, 16 * TILE_SIZE, 12 * TILE_SIZE, 1 * TILE_SIZE);
-        ctx.fillRect(7 * TILE_SIZE, 15 * TILE_SIZE, 14 * TILE_SIZE, 1 * TILE_SIZE);
-        ctx.fillRect(6 * TILE_SIZE, 14 * TILE_SIZE, 16 * TILE_SIZE, 1 * TILE_SIZE);
-        ctx.fillRect(5 * TILE_SIZE, 6 * TILE_SIZE, 18 * TILE_SIZE, 8 * TILE_SIZE); //Middle of face
-        ctx.fillRect(6 * TILE_SIZE, 5 * TILE_SIZE, 16 * TILE_SIZE, 1 * TILE_SIZE);
-        ctx.fillRect(8 * TILE_SIZE, 4 * TILE_SIZE, 12 * TILE_SIZE, 1 * TILE_SIZE);
-        ctx.fillRect(9 * TILE_SIZE, 3 * TILE_SIZE, 10 * TILE_SIZE, 1 * TILE_SIZE);
-        
-        //Glasses
-        ctx.fillStyle = "#000000ff";
-        ctx.fillRect(5 * TILE_SIZE, 8 * TILE_SIZE, 18 * TILE_SIZE, 1 * TILE_SIZE);
-        ctx.fillRect(8 * TILE_SIZE, 9 * TILE_SIZE, 5 * TILE_SIZE, 2 * TILE_SIZE);
-        ctx.fillRect(15 * TILE_SIZE,9 * TILE_SIZE, 5 * TILE_SIZE, 2 * TILE_SIZE);
+        //Eyesockets
+        ctx.fillStyle = "#f9ba83ff"; 
+        ctx.fillRect(12 * TILE_SIZE, 13 * TILE_SIZE, 4 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(12 * TILE_SIZE, 14 * TILE_SIZE, 1 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(15 * TILE_SIZE, 14 * TILE_SIZE, 1 * TILE_SIZE, 4 * TILE_SIZE);
+        ctx.fillRect(15 * TILE_SIZE, 18 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE); 
+        ctx.fillRect(22 * TILE_SIZE, 14 * TILE_SIZE, 1 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(22 * TILE_SIZE, 13 * TILE_SIZE, 3 * TILE_SIZE, 1 * TILE_SIZE);
         
         //Eyes
-        ctx.fillStyle = "#ffffff";
-        ctx.fillRect(9 * TILE_SIZE, 9 * TILE_SIZE, 3 * TILE_SIZE, 1 * TILE_SIZE);
-        ctx.fillRect(16 * TILE_SIZE, 9 * TILE_SIZE, 3 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillStyle = "black";
+        ctx.fillRect(13 * TILE_SIZE, 14 * TILE_SIZE, 1 * TILE_SIZE, 2 * TILE_SIZE);
+        ctx.fillRect(23 * TILE_SIZE, 14 * TILE_SIZE, 1 * TILE_SIZE, 2 * TILE_SIZE);
 
-        //Pupils
-        ctx.fillStyle = "#000000ff";
-        ctx.fillRect(10 * TILE_SIZE, 9 * TILE_SIZE, 1 * TILE_SIZE, 1 * TILE_SIZE);
-        ctx.fillRect(17 * TILE_SIZE, 9 * TILE_SIZE, 1 * TILE_SIZE, 1 * TILE_SIZE);
+        //Eyebrows
+        ctx.fillStyle = "#3b2f2fff"; 
+        ctx.fillRect(12 * TILE_SIZE, 12 * TILE_SIZE, 4 * TILE_SIZE, 1 * TILE_SIZE); //Left eyebrow
+        ctx.fillRect(21 * TILE_SIZE, 12 * TILE_SIZE, 4 * TILE_SIZE, 1 * TILE_SIZE); //Right eyebrow
+        ctx.fillStyle = "#6d4535ff";
+        ctx.fillRect(13 * TILE_SIZE, 12 * TILE_SIZE, 3 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(22 * TILE_SIZE, 12 * TILE_SIZE, 3 * TILE_SIZE, 1 * TILE_SIZE);
+
+        //Nose
+        ctx.fillStyle = "#e59650ff"; 
+        ctx.fillRect(18 * TILE_SIZE, 16 * TILE_SIZE, 1 * TILE_SIZE, 3 * TILE_SIZE);
+        ctx.fillRect(17 * TILE_SIZE, 19 * TILE_SIZE, 3 * TILE_SIZE, 1 * TILE_SIZE);
 
         //Mouth
-        ctx.fillStyle = "#ff0000ff";
-        ctx.fillRect(12 * TILE_SIZE, 15 * TILE_SIZE, 4 * TILE_SIZE, 1 * TILE_SIZE);
-        
+        ctx.fillStyle = "#ffffffff";
+        ctx.fillRect(15 * TILE_SIZE, 21 * TILE_SIZE, 6 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(16 * TILE_SIZE, 22 * TILE_SIZE, 4 * TILE_SIZE, 1 * TILE_SIZE);
+
+        //Hair
+        ctx.fillStyle = "#703a1cff"; 
+        ctx.fillRect(6 * TILE_SIZE, 9 * TILE_SIZE, 1 * TILE_SIZE, 4 * TILE_SIZE);
+        ctx.fillRect(6 * TILE_SIZE, 7 * TILE_SIZE, 1 * TILE_SIZE, 2 * TILE_SIZE);
+        ctx.fillRect(6 * TILE_SIZE, 6 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(7 * TILE_SIZE, 5 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(8 * TILE_SIZE, 4 * TILE_SIZE, 20 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(27 * TILE_SIZE, 5 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(28 * TILE_SIZE, 6 * TILE_SIZE, 1 * TILE_SIZE, 2 * TILE_SIZE);
+        ctx.fillRect(29 * TILE_SIZE, 7 * TILE_SIZE, 1 * TILE_SIZE, 6 * TILE_SIZE);
+        ctx.fillRect(11 * TILE_SIZE, 3 * TILE_SIZE, 16 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(14 * TILE_SIZE, 2 * TILE_SIZE, 12 * TILE_SIZE, 1 * TILE_SIZE);
+
+        ctx.fillRect(9 * TILE_SIZE, 5 * TILE_SIZE, 18 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(8 * TILE_SIZE, 6 * TILE_SIZE, 1 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(27 * TILE_SIZE, 6 * TILE_SIZE, 1 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(7 * TILE_SIZE, 7 * TILE_SIZE, 1 * TILE_SIZE, 5 * TILE_SIZE);
+        ctx.fillRect(28 * TILE_SIZE, 7 * TILE_SIZE, 1 * TILE_SIZE, 5 * TILE_SIZE);
+        ctx.fillRect(15 * TILE_SIZE, 6 * TILE_SIZE, 12 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(16 * TILE_SIZE, 7 * TILE_SIZE, 12 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(18 * TILE_SIZE, 8 * TILE_SIZE, 10 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(22 * TILE_SIZE, 9 * TILE_SIZE, 6 * TILE_SIZE, 1 * TILE_SIZE);
+
+        //Hair Shading
+        ctx.fillStyle = "#4b2310ff";
+        ctx.fillRect(8 * TILE_SIZE, 6 * TILE_SIZE, 1 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(9 * TILE_SIZE, 5 * TILE_SIZE, 6 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(7 * TILE_SIZE, 9 * TILE_SIZE, 1 * TILE_SIZE, 3 * TILE_SIZE);
+        ctx.fillRect(6 * TILE_SIZE, 12 * TILE_SIZE, 1 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(28 * TILE_SIZE, 11 * TILE_SIZE, 1 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(29 * TILE_SIZE, 12 * TILE_SIZE, 1 * TILE_SIZE, 1 * TILE_SIZE);
+
+        //Hairlines
+        ctx.fillStyle = ("#ffb371ff");
+        ctx.fillRect(9 * TILE_SIZE, 6 * TILE_SIZE, 1 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(8 * TILE_SIZE, 7 * TILE_SIZE, 1 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(14 * TILE_SIZE, 6 * TILE_SIZE, 1 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(15 * TILE_SIZE, 7 * TILE_SIZE, 1 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(16 * TILE_SIZE, 8 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(18 * TILE_SIZE, 9 * TILE_SIZE, 4 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(22 * TILE_SIZE, 10 * TILE_SIZE, 6 * TILE_SIZE, 1 * TILE_SIZE);
+
+        //Glasses
+        ctx.fillStyle = "black";
+        ctx.fillRect(11 * TILE_SIZE, 13 * TILE_SIZE, 6 * TILE_SIZE, 1 * TILE_SIZE)
+        ctx.fillRect(12 * TILE_SIZE, 16 * TILE_SIZE, 4 * TILE_SIZE, 1 * TILE_SIZE)
+        ctx.fillRect(11 * TILE_SIZE, 14 * TILE_SIZE, 1 * TILE_SIZE, 2 * TILE_SIZE);
+        ctx.fillRect(16 * TILE_SIZE, 14 * TILE_SIZE, 1 * TILE_SIZE, 2 * TILE_SIZE);
+
+        ctx.fillRect(20 * TILE_SIZE, 13 * TILE_SIZE, 6 * TILE_SIZE, 1 * TILE_SIZE)
+        ctx.fillRect(21 * TILE_SIZE, 16 * TILE_SIZE, 4 * TILE_SIZE, 1 * TILE_SIZE)
+        ctx.fillRect(20 * TILE_SIZE, 14 * TILE_SIZE, 1 * TILE_SIZE, 2 * TILE_SIZE);
+        ctx.fillRect(25 * TILE_SIZE, 14 * TILE_SIZE, 1 * TILE_SIZE, 2 * TILE_SIZE);
+
+        //Glasses lenses
+        ctx.fillStyle = "#ffffffff"; 
+        ctx.fillRect(12 * TILE_SIZE, 14 * TILE_SIZE, 4 * TILE_SIZE, 2 * TILE_SIZE);
+        ctx.fillRect(21 * TILE_SIZE, 14 * TILE_SIZE, 4 * TILE_SIZE, 2 * TILE_SIZE);
+
+        //Glasses bridge
+        ctx.fillStyle = "black";
+        ctx.fillRect(17 * TILE_SIZE, 13 * TILE_SIZE, 3 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(6 * TILE_SIZE, 13 * TILE_SIZE, 5 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(26 * TILE_SIZE, 13 * TILE_SIZE, 4 * TILE_SIZE, 1 * TILE_SIZE);
+
+        //Pupils
+        ctx.fillStyle = "#3b2f2fff";
+        ctx.fillRect(13 * TILE_SIZE, 15 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(22 * TILE_SIZE, 15 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
+
+        //Face shading
+        ctx.fillStyle = "#f9ba83ff";
+        ctx.fillRect(7 * TILE_SIZE, 20 * TILE_SIZE, 1 * TILE_SIZE, 5 * TILE_SIZE);
+        ctx.fillRect(8 * TILE_SIZE, 25 * TILE_SIZE, 1 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(9 * TILE_SIZE, 26 * TILE_SIZE, 13 * TILE_SIZE, 1 * TILE_SIZE);
+        ctx.fillRect(17 * TILE_SIZE, 24 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
+
     }
         
     drawGrid();
