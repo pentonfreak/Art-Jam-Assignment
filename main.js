@@ -39,8 +39,27 @@ window.addEventListener("load", function() {
         }
     }
 
+});
 
-// Draw pixel self portrait
+let mouseX = WIDTH / 2;
+let mouseY = HEIGHT / 2;
+
+window.addEventListener("load", function() {
+    const canvas = document.getElementById("canvas1");
+    canvas.width = WIDTH;
+    canvas.height = HEIGHT;
+    const ctx = canvas.getContext("2d");
+
+
+    function drawGrid() {
+        for (let row = 0; row < ROWS; row++) {
+            for (let col = 0; col < COLS; col++) {
+                ctx.strokeRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+            }
+        }
+    }
+
+    // Draw pixel self portrait
     function drawPixelArt() {
         
         //Face Silouette
@@ -153,25 +172,89 @@ window.addEventListener("load", function() {
         ctx.fillRect(6 * TILE_SIZE, 13 * TILE_SIZE, 5 * TILE_SIZE, 1 * TILE_SIZE);
         ctx.fillRect(26 * TILE_SIZE, 13 * TILE_SIZE, 4 * TILE_SIZE, 1 * TILE_SIZE);
 
-        //Pupils
-        ctx.fillStyle = "#3b2f2fff";
-        ctx.fillRect(13 * TILE_SIZE, 15 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
-        ctx.fillRect(22 * TILE_SIZE, 15 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
-
-
         //Face shading
         ctx.fillStyle = "#f9ba83ff";
         ctx.fillRect(7 * TILE_SIZE, 20 * TILE_SIZE, 1 * TILE_SIZE, 5 * TILE_SIZE);
         ctx.fillRect(8 * TILE_SIZE, 25 * TILE_SIZE, 1 * TILE_SIZE, 1 * TILE_SIZE);
         ctx.fillRect(9 * TILE_SIZE, 26 * TILE_SIZE, 13 * TILE_SIZE, 1 * TILE_SIZE);
         ctx.fillRect(17 * TILE_SIZE, 24 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
+       
+
+        // Pupils follow mouse
+        // Left eye center 
+        const leftEyeCenter = {
+            x: 13 * TILE_SIZE,
+            y: 15 * TILE_SIZE
+        };
+        // Right eye center
+        const rightEyeCenter = {
+            x: 23 * TILE_SIZE,
+            y: 15 * TILE_SIZE
+        };
+
+        // Pupil movement radius (in pixels)
+        const pupilRadius = 10;
+
+        // Calculate direction to mouse for each eye
+        function getPupilOffset(eye) {
+            const dx = mouseX - eye.x;
+            const dy = mouseY - eye.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist === 0) return { x: 0, y: 0 };
+            const maxDist = pupilRadius;
+            return {
+                x: (dx / dist) * Math.min(dist, maxDist),
+                y: (dy / dist) * Math.min(dist, maxDist)
+            };
+        }
+
+        const leftOffset = getPupilOffset(leftEyeCenter);
+        const rightOffset = getPupilOffset(rightEyeCenter);
+
+        // Draw pupils
+        ctx.fillStyle = "#3b2f2fff";
+        ctx.fillRect(
+            Math.round(leftEyeCenter.x + leftOffset.x - TILE_SIZE / 2),
+            Math.round(leftEyeCenter.y + leftOffset.y - TILE_SIZE / 2),
+            2 * TILE_SIZE, 1 * TILE_SIZE
+        );
+        ctx.fillRect(
+            Math.round(rightEyeCenter.x + rightOffset.x - TILE_SIZE / 2),
+            Math.round(rightEyeCenter.y + rightOffset.y - TILE_SIZE / 2),
+            2 * TILE_SIZE, 1 * TILE_SIZE
+        );
+    }
+
+    function redraw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Redraw column letters
+        for (let col = 0; col < COLS; col++) {
+            const letter = String.fromCharCode(65 + col);
+            ctx.fillText(letter, col * TILE_SIZE + TILE_SIZE / 2 + TILE_SIZE, TILE_SIZE / 2);
+        }
+        // Redraw row numbers
+        for (let row = 0; row < ROWS; row++) {
+            ctx.fillText((row + 1).toString(), TILE_SIZE / 2, row * TILE_SIZE + TILE_SIZE / 2 + TILE_SIZE);
+        }
+        drawGrid();
+        drawPixelArt();
+    }
+
+    redraw();
+
+    // Track mouse movement
+    canvas.addEventListener("mousemove", function(e) {
+        const rect = canvas.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+        redraw();
+    });
 
     }
+);
         
     drawGrid();
     drawPixelArt();
-});
-
 
 
 
