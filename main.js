@@ -165,5 +165,4 @@ window.addEventListener("load", function() {
         
     drawGrid();
     drawPixelArt();
-    console.log("drawPixelArt");
 });
