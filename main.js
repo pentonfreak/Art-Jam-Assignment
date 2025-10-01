@@ -5,6 +5,9 @@
 
 //Create a grid
 
+"use strict";
+
+// Set up canvas and grid parameters
 const TILE_SIZE = 25;
 const COLS = 35;
 const ROWS = 35;
@@ -35,6 +38,7 @@ window.addEventListener("load", function() {
             }
         }
     }
+
 
 // Draw pixel self portrait
     function drawPixelArt() {
@@ -154,6 +158,7 @@ window.addEventListener("load", function() {
         ctx.fillRect(13 * TILE_SIZE, 15 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
         ctx.fillRect(22 * TILE_SIZE, 15 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
 
+
         //Face shading
         ctx.fillStyle = "#f9ba83ff";
         ctx.fillRect(7 * TILE_SIZE, 20 * TILE_SIZE, 1 * TILE_SIZE, 5 * TILE_SIZE);
@@ -166,3 +171,10 @@ window.addEventListener("load", function() {
     drawGrid();
     drawPixelArt();
 });
+
+
+
+
+
+
+
