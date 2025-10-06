@@ -207,7 +207,6 @@ window.addEventListener("load", function() {
     }    
     drawGrid();
     drawPixelArt();
-
 });
 
 
