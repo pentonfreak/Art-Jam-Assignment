@@ -14,35 +14,8 @@ const ROWS = 35;
 const WIDTH = TILE_SIZE * COLS;
 const HEIGHT = TILE_SIZE * ROWS;
 
-window.addEventListener("load", function() {
-    const canvas = document.getElementById("canvas1");
-    canvas.width = WIDTH;
-    canvas.height = HEIGHT;
-    const ctx = canvas.getContext("2d");
-
-// Draw column letters
-        for (let col = 0; col < COLS; col++) {
-            const letter = String.fromCharCode(65 + col); // 65 = 'A'
-            ctx.fillText(letter, col * TILE_SIZE + TILE_SIZE / 2 + TILE_SIZE, TILE_SIZE / 2);
-        }
-
-// Draw row numbers
-        for (let row = 0; row < ROWS; row++) {
-            ctx.fillText((row + 1).toString(), TILE_SIZE / 2, row * TILE_SIZE + TILE_SIZE / 2 + TILE_SIZE);
-        }
-
-    function drawGrid() {
-        for (let row = 0; row < ROWS; row++) {
-            for (let col = 0; col < COLS; col++) {
-                ctx.strokeRect(col * TILE_SIZE, row * TILE_SIZE, TILE_SIZE, TILE_SIZE);
-            }
-        }
-    }
-
-});
-
-let mouseX = WIDTH / 2;
-let mouseY = HEIGHT / 2;
+let mouseX = WIDTH;
+let mouseY = HEIGHT;
 
 window.addEventListener("load", function() {
     const canvas = document.getElementById("canvas1");
@@ -179,37 +152,62 @@ window.addEventListener("load", function() {
         ctx.fillRect(9 * TILE_SIZE, 26 * TILE_SIZE, 13 * TILE_SIZE, 1 * TILE_SIZE);
         ctx.fillRect(17 * TILE_SIZE, 24 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
 
-        //Pupils
-        ctx.fillStyle = "#3b2f2fff";
-        ctx.fillRect(13 * TILE_SIZE, 15 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
-        ctx.fillRect(22 * TILE_SIZE, 15 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
-
-        window.addEventListener("click", mouseClicked);
-
-        //Function to make pupils move up when clicked
-        function mouseClicked() {
-            ctx.fillStyle = "#ffffffff";
-            ctx.fillRect(13 * TILE_SIZE, 15 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
-            ctx.fillRect(22 * TILE_SIZE, 15 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
-            ctx.fillStyle = "#3b2f2fff";
-            ctx.fillRect(13 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
-            ctx.fillRect(22 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
+        //Function to make pupils move left when the mouse is on the left side of the canvas
+        window.addEventListener("mousemove", function(event) {
+            const rect = canvas.getBoundingClientRect();
+            mouseX = event.clientX - rect.left;
+            mouseY = event.clientY - rect.top;
+        });
+        setInterval(updatePupils, 100);
+        function updatePupils() {
+            if (mouseX <= WIDTH / 2) {
+                ctx.fillStyle = "#ffffffff";
+                ctx.fillRect(13 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+                ctx.fillRect(22 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+                ctx.fillStyle = "#3b2f2fff";
+                ctx.fillRect(12 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+                ctx.fillRect(21 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+            } 
+            else {
+                ctx.fillStyle = "#ffffffff";
+                ctx.fillRect(12 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+                ctx.fillRect(21 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+                ctx.fillStyle = "#3b2f2fff";
+                ctx.fillRect(13 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+                ctx.fillRect(22 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
             }
-        //Function to make pupils move back down when double clicked
-        window.addEventListener("dblclick", mouseClicked2);
-        function mouseClicked2() {
-            ctx.fillStyle = "#ffffffff";
-            ctx.fillRect(13 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
-            ctx.fillRect(22 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
-            ctx.fillStyle = "#3b2f2fff";
-            ctx.fillRect(13 * TILE_SIZE, 15 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
-            ctx.fillRect(22 * TILE_SIZE, 15 * TILE_SIZE, 2 * TILE_SIZE, 1 * TILE_SIZE);
-            }
+        }
         
-}
+        //Function to make pupils move right when the mouse is on the right side of the canvas
 
+         window.addEventListener("mousemove", function(event) {
+             const rect = canvas.getBoundingClientRect();
+             mouseX = event.clientX += rect.right;
+             mouseY = event.clientY += rect.top;
+         });
+         setInterval(updatePupils, 100);
+          function updatePupils() {
+              if (mouseX >= WIDTH / 2) {
+                 ctx.fillStyle = "#ffffffff";
+                 ctx.fillRect(13 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+                 ctx.fillRect(22 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+                 ctx.fillStyle = "#3b2f2fff";
+                 ctx.fillRect(14 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+                 ctx.fillRect(23 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+              }
+              else {
+                  ctx.fillStyle = "#ffffffff";
+                  ctx.fillRect(12 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+                  ctx.fillRect(21 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+                  ctx.fillStyle = "#3b2f2fff";
+                  ctx.fillRect(13 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+                  ctx.fillRect(22 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+             }
+         }
+    }    
     drawGrid();
     drawPixelArt();
+
 });
 
 
