@@ -180,30 +180,30 @@ window.addEventListener("load", function() {
         
         //Function to make pupils move right when the mouse is on the right side of the canvas
 
-         window.addEventListener("mousemove", function(event) {
-             const rect = canvas.getBoundingClientRect();
-             mouseX = event.clientX += rect.right;
-             mouseY = event.clientY += rect.top;
-         });
-         setInterval(updatePupils, 100);
-          function updatePupils() {
-              if (mouseX >= WIDTH / 2) {
-                 ctx.fillStyle = "#ffffffff";
-                 ctx.fillRect(13 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
-                 ctx.fillRect(22 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
-                 ctx.fillStyle = "#3b2f2fff";
-                 ctx.fillRect(14 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
-                 ctx.fillRect(23 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
-              }
-              else {
-                  ctx.fillStyle = "#ffffffff";
-                  ctx.fillRect(12 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
-                  ctx.fillRect(21 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
-                  ctx.fillStyle = "#3b2f2fff";
-                  ctx.fillRect(13 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
-                  ctx.fillRect(22 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
-             }
-         }
+        //  window.addEventListener("mousemove", function(event) {
+        //      const rect = canvas.getBoundingClientRect();
+        //      mouseX = event.clientX += rect.right;
+        //      mouseY = event.clientY += rect.top;
+        //  });
+        //  setInterval(updatePupils, 100);
+        //   function updatePupils() {
+        //       if (mouseX >= WIDTH / 2) {
+        //          ctx.fillStyle = "#ffffffff";
+        //          ctx.fillRect(13 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+        //          ctx.fillRect(22 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+        //          ctx.fillStyle = "#3b2f2fff";
+        //          ctx.fillRect(14 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+        //          ctx.fillRect(23 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+        //       }
+        //       else {
+        //           ctx.fillStyle = "#ffffffff";
+        //           ctx.fillRect(12 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+        //           ctx.fillRect(21 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+        //           ctx.fillStyle = "#3b2f2fff";
+        //           ctx.fillRect(13 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+        //           ctx.fillRect(22 * TILE_SIZE, 14 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE);
+        //      }
+        //  }
     }    
     drawGrid();
     drawPixelArt();
