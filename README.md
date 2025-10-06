@@ -2,8 +2,8 @@
 Khuong's Art Jam assignment - date due 30/9/2025
 
 For variables, I did use "const" and "let".
-For use interaction, I made the pupils to follow the mouse.
-Me as a beginner of javascript, there quite a few things that are new to me: "for" and "let", "ctx", "return", "Math.round", "Math.min", "Math.squrt".
+For use interaction, I made the pupils to follow the mouse but only to the left (still think how to move it to the right)
+Me as a beginner of javascript, there quite a few things that are new to me: "for" and "let", "ctx"
 For conditionals, I did use "if", maybe there's more but that's all I know.
 
 But, here's the thing, I am still struggle to make the grid fit into the HTML canvas.
